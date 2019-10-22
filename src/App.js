@@ -3,6 +3,7 @@ import React, { useState}  from 'react';
 export const App = () => {
   const [input, setInput] = useState("");
   const [palindrome, setPalindrome] = useState("");
+  let palindromeArray = [];
 
   const myFunction = () => {
    if(typeof input !== 'string' || input.length > 30) {
@@ -16,6 +17,14 @@ export const App = () => {
 
     const isPalindrome = inputReversed === inputToLowerCase;
     setPalindrome(isPalindrome);
+
+    if (isPalindrome) {
+      palindromeArray.push(input)
+    } else {
+      return;
+    }
+
+    console.log('This is my array' + palindromeArray);
   }
 
   return (
