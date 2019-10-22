@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState}  from 'react';
 
-function App() {
+export const App = () => {
+  const [input, setInput] = useState("");
+
+  const myFunction = () => {
+    const inputToLowerCase = input.toLowerCase();
+    console.log(inputToLowerCase);
+    const inputReversed = inputToLowerCase.split("").reverse().join("");
+    console.log(inputReversed);
+    if(inputToLowerCase === inputReversed) {
+      console.log('Yes');
+    } else {
+      console.log('No');
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <form>
+    <h1>Word Checker App</h1>
+    <input type="text" onChange={e => setInput(e.target.value)} />
+    <button type="button" onClick={myFunction}>Subtmit</button>
+  </form>
   );
 }
-
-export default App;
